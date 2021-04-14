@@ -54,6 +54,7 @@ class Botview(generic.View):
                 # return HttpResponse("attachment damjuullaa")
                 # return HttpResponse(b["attachments"])
                 sender_psid = c["sender"]["id"]
+                attachment_url = b["attachments"]["payload"]["url"]
                 d = json.dumps(
                     {"recipient": {"id": sender_psid}, 
                     # "message": {"attachments": "attachments damjuullaa"+b["attachments"]["type"]+b["attachments"]["payload"]["url"]}})
