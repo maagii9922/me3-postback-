@@ -25,7 +25,7 @@ SECRET_KEY = '!*voz7^k&!jpx3m4#b(yz(n+(v2uaut#609oi)p)q*b2oze(-y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["infinite-sands-98742.herokuapp.com"]
+ALLOWED_HOSTS = ["infinite-sands-98742.herokuapp.com","127.0.0.1"]
 
 
 # Application definition

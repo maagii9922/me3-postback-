@@ -33,117 +33,42 @@ class Botview(generic.View):
         return generic.View.dispatch(self, request, *args, **kwargs)
 
     def post(self,request,*args,**kwargs):
-        incoming_massege=json.loads(self.request.body.decode('utf-8'))
+        body=json.loads(self.request.body.decode('utf-8'))
+        c=body["entry"][0]["messaging"][0]
+        print(c)
+        # if "b" in body:
+        #     return HttpResponse("bna")
+        # else:
+        #     return HttpResponse("alga")
+        # for key in body:
+        #     print(    body[key]             ) 
+        # for key in body["c"]:
+        #     print(key)
+        if "message" in c:
+            b=c["message"]
+            if "text" in b and "attachment" in b:
+                # return HttpResponse("text attachment damjuullaa")
+                return HttpResponse(b["text"] + " "+ b["attachment"])                
+            elif "attachment" in b and "text" not in b:
+                # return HttpResponse("attachment damjuullaa")
+                return HttpResponse(b["attachment"])
+            elif "text" in b and "attachment" not in b:
+                # return HttpResponse("text damjuullaa")
+                # return HttpResponse(b["text"])
+                sender_psid = c["sender"]["id"]
+                d = json.dumps(
+                    {"recipient": {"id": sender_psid}, 
+                    "message": {"text": "text damjuullaa"+b["text"]}})
+                print(d)
+                status = requests.post('https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN, headers={ "Content-Type": "application/json"}, data=d)
+                return HttpResponse(status)
+        elif "postback" in c:
+            return HttpResponse(c["postback"]["title"]+" "+c["postback"]["payload"])
+            
+        
 
+        return HttpResponse("end")
 
-        # return HttpResponse(incoming_massege['object']
-        for entry in incoming_massege['entry']:
-            # print(entry)
-            for m in entry['messaging']:
-                # print(m)
-                if 'message' in m:
-                    # post_facebook_message(m['sender']['id'],m['message']['text'])
-                    handleMessage(m['sender']['id'], m['message'])
-                else :
-                    handlePostback(m['sender']['id'], m['postback'])
-
-        return HttpResponse()
-
-
-
-
-
-
-def post_facebook_message(fbid, recevied_message):
-    tokens = re.sub(r"[^a-zA-Z0-9А-яӨҮөү,\s]", '', recevied_message).lower()
-    joke_text = ''
-
-    for key, value in jokes.items(): 
-        if tokens.find(key) >= 0:
-            joke_text = random.choice(jokes[key])
-    
-    if not joke_text:
-        joke_text = "Би ойлгосонгүй! Бидэн уруу 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' гэж илгээнэ үү!"
-    
-
-    user_details_url = "https://graph.facebook.com/v2.6/%s" % fbid
-    user_details_params = {
-        'fields': 'first_name,last_name', 'access_token': PAGE_ACCESS_TOKEN}
-    user_details = requests.get(user_details_url, user_details_params).json()
-    joke_text = 'Yo ' + user_details['first_name'] + '..! ' + joke_text
-
-
-    post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN
-    response_msg = json.dumps(
-        {"recipient": {"id": fbid}, "message": {"text": joke_text}})
-    status = requests.post(post_message_url, headers={
-                           "Content-Type": "application/json"}, data=response_msg)
-
-    return HttpResponse(joke_text)
-
-
-#  Handles messages events
-def handleMessage(sender_psid, received_message):
-    print(received_message)
-    response = ''
-    if "text" in received_message:
-        response = {"text": "You sent the message: " + received_message['text'] + ". Now send me an image!"}
-    elif "attachments" in received_message :  
-        attachment_url = received_message['attachments'][0]['payload']['url']
-        print(attachment_url)
-        response = {
-            "attachment": {
-                "type": "template",
-                "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "Is this the right picture?",
-                    "subtitle": "Tap a button to answer.",
-                    "image_url": attachment_url,
-                    "buttons": [
-                    {
-                        "type": "postback",
-                        "title": "Yes!",
-                        "payload": "yes",
-                    },
-                    {
-                        "type": "postback",
-                        "title": "No!",
-                        "payload": "no",
-                    }
-                    ],
-                }]
-                }
-            }
-            }
-  
-    
-    callSendAPI(sender_psid, response)
-  
-
-
-
-# Handles messaging_postbacks events
-def handlePostback(sender_psid, received_postback):
-    response = ''
-    payload = received_postback['payload']
-    if payload == 'yes':
-        response = { "text": "Thanks!" }
-    elif payload == 'no':
-        response = { "text": "Oops, try sending another image." }
-    callSendAPI(sender_psid, response)
-
-
-#  Sends response messages via the Send API
-def callSendAPI(sender_psid, response):
-
-    post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN
-    response_msg = json.dumps(
-        {"recipient": {"id": sender_psid}, "message": response})
-    status = requests.post(post_message_url, headers={
-                           "Content-Type": "application/json"}, data=response_msg)
-    return HttpResponse(status)
-  
 
 
 
