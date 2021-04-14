@@ -50,11 +50,11 @@ class Botview(generic.View):
                 # return HttpResponse("text attachment damjuullaa")
                 return HttpResponse(b["text"] + " "+ b["attachments"])                
             elif "attachments" in b and "text" not in b:
-                print(b["attachments"])
+                print(b["attachments"][0])
                 # return HttpResponse("attachment damjuullaa")
                 # return HttpResponse(b["attachments"])
                 sender_psid = c["sender"]["id"]
-                attachment_url = b["attachments"]["payload"]["url"]
+                attachment_url = b["attachments"][0]["payload"]["url"]
                 d = json.dumps(
                     {"recipient": {"id": sender_psid}, 
                     # "message": {"attachments": "attachments damjuullaa"+b["attachments"]["type"]+b["attachments"]["payload"]["url"]}})
