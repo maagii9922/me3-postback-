@@ -46,14 +46,14 @@ class Botview(generic.View):
         #     print(key)
         if "message" in c:
             b=c["message"]
-            if "text" in b and "attachment" in b:
+            if "text" in b and "attachments" in b:
                 # return HttpResponse("text attachment damjuullaa")
-                return HttpResponse(b["text"] + " "+ b["attachment"])                
-            elif "attachment" in b and "text" not in b:
-                print(b["attachment"])
+                return HttpResponse(b["text"] + " "+ b["attachments"])                
+            elif "attachments" in b and "text" not in b:
+                print(b["attachments"])
                 # return HttpResponse("attachment damjuullaa")
-                return HttpResponse(b["attachment"])
-            elif "text" in b and "attachment" not in b:
+                return HttpResponse(b["attachments"]["type"]+ " "+b["attachments"]["payload"])
+            elif "text" in b and "attachments" not in b:
                 # return HttpResponse("text damjuullaa")
                 # return HttpResponse(b["text"])
                 sender_psid = c["sender"]["id"]
