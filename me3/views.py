@@ -50,6 +50,7 @@ class Botview(generic.View):
                 # return HttpResponse("text attachment damjuullaa")
                 return HttpResponse(b["text"] + " "+ b["attachment"])                
             elif "attachment" in b and "text" not in b:
+                print(b["attachment"])
                 # return HttpResponse("attachment damjuullaa")
                 return HttpResponse(b["attachment"])
             elif "text" in b and "attachment" not in b:
@@ -59,7 +60,6 @@ class Botview(generic.View):
                 d = json.dumps(
                     {"recipient": {"id": sender_psid}, 
                     "message": {"text": "text damjuullaa"+b["text"]}})
-                print(d)
                 status = requests.post('https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN, headers={ "Content-Type": "application/json"}, data=d)
                 return HttpResponse(status)
         elif "postback" in c:
