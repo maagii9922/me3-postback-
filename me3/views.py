@@ -57,7 +57,36 @@ class Botview(generic.View):
                 d = json.dumps(
                     {"recipient": {"id": sender_psid}, 
                     # "message": {"attachments": "attachments damjuullaa"+b["attachments"]["type"]+b["attachments"]["payload"]["url"]}})
-                    "message": {"text": "attachments" }})
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                            "template_type": "generic",
+                            "elements": [{
+                                "title": "Is this the right picture?",
+                                "subtitle": "Tap a button to answer.",
+                                "image_url": attachment_url,
+                                "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Yes!",
+                                    "payload": "yes",
+                                },
+                                {
+                                    "type": "postback",
+                                    "title": "No!",
+                                    "payload": "no",
+                                }
+                                ],
+                            }]
+                            }
+                        }
+                        }
+                    
+                    
+                    
+                    
+                    })
                 status = requests.post('https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN, headers={ "Content-Type": "application/json"}, data=d)
                 return HttpResponse(status)
             elif "text" in b and "attachments" not in b:
