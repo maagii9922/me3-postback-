@@ -1,1 +1,1 @@
-web: gunicorn jish1.wsgi
+web: gunicorn me2.wsgi
