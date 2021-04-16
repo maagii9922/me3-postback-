@@ -69,7 +69,7 @@ class Botview(generic.View):
                                         "type":"web_url",
                                         "url":"https://www.messenger.com",
                                         "title":"Visit Messenger"
-                                    }
+                                    }]
                             }
                         }
                         }
