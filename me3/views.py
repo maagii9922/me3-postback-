@@ -109,38 +109,56 @@ class Botview(generic.View):
                             "type": "template",
                             "payload": {
                             "template_type": "generic",
-                            "elements": [
-                                {
-                                "title": "Холбоо барих",
-                                "default_action": {
-                                    "type": "web_url",
-                                    "webview_height_ratio": "TALL"
-                                },
+                            "elements": [{
+                                "title": "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу",
                                 "buttons": [
                                 {
                                     "type": "postback",
-                                    "title": "Эхлэх2",
+                                    "title": "Эхлэх",
                                     "payload": "home",
                                 },
                                 {
                                     "type": "postback",
-                                    "title": "Холбоо барих2",
+                                    "title": "Холбоо барих",
                                     "payload": "contact",
                                 },
                                 {
                                     "type": "postback",
-                                    "title": "Түгээмэл асуулт хариулт2",
+                                    "title": "Түгээмэл асуулт хариулт",
                                     "payload": "qa",
                                 }
                                 ]
+                            },{
+                                "title": "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу",
+                                "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Эхлэх",
+                                    "payload": "home",
+                                },
+                                {
+                                    "type": "postback",
+                                    "title": "Холбоо барих",
+                                    "payload": "contact",
+                                },
+                                {
+                                    "type": "postback",
+                                    "title": "Түгээмэл асуулт хариулт",
+                                    "payload": "qa",
+                                }
+                                ],
                             }
+                            
                             ]
                             }
                         }
                         }
-                        )
-
-            
+                    
+                    
+                    
+                    
+                    })
+                
             status = requests.post('https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN, headers={ "Content-Type": "application/json"}, data=d)
             return HttpResponse(status)
 
