@@ -56,6 +56,8 @@ class Botview(generic.View):
                             "template_type": "generic",
                             "elements": [{
                                 "title": "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу",
+                                "subtitle":"Бидэнтэй холбогдох",
+                                "image_url":"https://www.facebook.com/messenger_media?thread_id=100612838351740&attachment_id=186711756628825&message_id=mid.%24cAAABcg0H7yF_CzoJW142fTAHMHM-"
                                 "buttons": [
                                 {
                                     "type": "postback",
@@ -111,6 +113,47 @@ class Botview(generic.View):
                             "template_type": "generic",
                             "elements": [{
                                 "title": "Холбоо барих",
+                                "subtitle":"Бид компанийн бүтээгдэхүүн үйлчилгээтэй холбоотой санал хүсэлтийг ажлын өдрүүдэд 8:30-18:00 цагт хүлээн авч шуурхай шийдвэрлэнэ.",
+                                "image_url":"https://www.facebook.com/messenger_media?thread_id=100612838351740&attachment_id=164256072246791&message_id=mid.%24cAAABcg0H7yF_Cy_F2142ep8X4GKr",
+                                "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Эхлэх",
+                                    "payload": "home",
+                                }
+                                
+                                ]
+                            },{
+                                "title": "Холбоо барих",
+                                "subtitle":"Бид компанийн бүтээгдэхүүн үйлчилгээтэй холбоотой санал хүсэлтийг ажлын өдрүүдэд 8:30-18:00 цагт хүлээн авч шуурхай шийдвэрлэнэ.",
+                                "image_url":"https://www.facebook.com/messenger_media?thread_id=100612838351740&attachment_id=164256072246791&message_id=mid.%24cAAABcg0H7yF_Cy_F2142ep8X4GKr",
+                                "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Эхлэх",
+                                    "payload": "home",
+                                }
+                                ]
+                            }
+                            
+                            ]
+                            }
+                        }
+                        }
+                    
+                    
+                    })
+
+            elif body["entry"][0]["messaging"][0]["postback"]['payload']=='qa':
+                d = json.dumps(
+                    {"recipient": {"id": sender_psid}, 
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                            "template_type": "generic",
+                            "elements": [{
+                                "title": "Түгээмэл асуулт хариулт",
                                 "subtitle":"99221422",
                                 "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/173742530_281534720215938_8618674504973062084_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=58c789&_nc_ohc=aP26TMSylogAX8N1zwB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=f773c76251565e53f9ff130d5d42ea7a&oe=609D57A2",
                                 "buttons": [
@@ -122,7 +165,7 @@ class Botview(generic.View):
                                 
                                 ]
                             },{
-                                "title": "Холбоо барих",
+                                "title": "Түгээмэл асуулт хариулт",
                                 "subtitle":"96692287",
                                 "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/173742530_281534720215938_8618674504973062084_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=58c789&_nc_ohc=aP26TMSylogAX8N1zwB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=f773c76251565e53f9ff130d5d42ea7a&oe=609D57A2",
                                 "buttons": [
@@ -140,9 +183,9 @@ class Botview(generic.View):
                         }
                     
                     
-                    
-                    
                     })
+
+
                 
             status = requests.post('https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN, headers={ "Content-Type": "application/json"}, data=d)
             return HttpResponse(status)
