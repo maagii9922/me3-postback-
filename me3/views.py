@@ -111,7 +111,7 @@ class Botview(generic.View):
                             "template_type": "generic",
                             "elements": [{
                                 "title": "Холбоо барих",
-                                "subtitle":"77107070,http://bumanit.mn "
+                                "subtitle":"77107070,http://bumanit.mn ",
                                 "buttons": [
                                 {
                                     "type": "postback",
@@ -122,7 +122,7 @@ class Botview(generic.View):
                                 ]
                             },{
                                 "title": "Холбоо барих",
-                                "subtitle":"http://bumanit.mn "
+                                "subtitle":"http://bumanit.mn ",
                                 "buttons": [
                                 {
                                     "type": "postback",
