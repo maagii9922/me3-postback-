@@ -132,9 +132,9 @@ class Botview(generic.View):
                                     "title": "Түгээмэл асуулт хариулт2",
                                     "payload": "qa",
                                 }
-                                ],
-                            }
-                            ]
+                                ]
+                            }#el
+                            ]#el
                             }
                         }
                         }
