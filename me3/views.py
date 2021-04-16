@@ -110,43 +110,26 @@ class Botview(generic.View):
                             "payload": {
                             "template_type": "generic",
                             "elements": [{
-                                "title": "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу",
+                                "title": "Холбоо барих",
+                                "subtitle":"77107070,http://bumanit.mn "
                                 "buttons": [
                                 {
                                     "type": "postback",
                                     "title": "Эхлэх",
                                     "payload": "home",
-                                },
-                                {
-                                    "type": "postback",
-                                    "title": "Холбоо барих",
-                                    "payload": "contact",
-                                },
-                                {
-                                    "type": "postback",
-                                    "title": "Түгээмэл асуулт хариулт",
-                                    "payload": "qa",
                                 }
+                                
                                 ]
                             },{
-                                "title": "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу",
+                                "title": "Холбоо барих",
+                                "subtitle":"http://bumanit.mn "
                                 "buttons": [
                                 {
                                     "type": "postback",
                                     "title": "Эхлэх",
                                     "payload": "home",
-                                },
-                                {
-                                    "type": "postback",
-                                    "title": "Холбоо барих",
-                                    "payload": "contact",
-                                },
-                                {
-                                    "type": "postback",
-                                    "title": "Түгээмэл асуулт хариулт",
-                                    "payload": "qa",
                                 }
-                                ],
+                                ]
                             }
                             
                             ]
