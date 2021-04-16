@@ -96,7 +96,12 @@ class Botview(generic.View):
         elif "postback" in c:
             print(body["entry"][0]["messaging"][0]["postback"])
             sender_psid = c["sender"]["id"]
-            if g.....f['payload']=='vjhgku'
+            d=""
+            if body["entry"][0]["messaging"][0]['payload']=='home':
+                d = json.dumps(
+                    {"recipient": {"id": sender_psid}, 
+                    "message": {"text": "home damjuullaa"+b["text"]}})
+
             
             status = requests.post('https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN, headers={ "Content-Type": "application/json"}, data=d)
             return HttpResponse(status)
