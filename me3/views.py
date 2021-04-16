@@ -57,7 +57,7 @@ class Botview(generic.View):
                             "elements": [{
                                 "title": "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу",
                                 "subtitle":"Бидэнтэй холбогдох",
-                                "image_url":"https://www.facebook.com/messenger_media?thread_id=100612838351740&attachment_id=186711756628825&message_id=mid.%24cAAABcg0H7yF_CzoJW142fTAHMHM-",
+                                "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/175042400_1413714218977426_6786538452300795158_n.png?_nc_cat=102&ccb=1-3&_nc_sid=58c789&_nc_ohc=LsYHLr8VFVMAX8RogPN&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=747a859757018d246ded1d5f1074ca09&oe=609FF38D",
                                 "buttons": [
                                 {
                                     "type": "postback",
@@ -114,7 +114,7 @@ class Botview(generic.View):
                             "elements": [{
                                 "title": "Холбоо барих",
                                 "subtitle":"Бид компанийн бүтээгдэхүүн үйлчилгээтэй холбоотой санал хүсэлтийг ажлын өдрүүдэд 8:30-18:00 цагт хүлээн авч шуурхай шийдвэрлэнэ.",
-                                "image_url":"https://www.facebook.com/messenger_media?thread_id=100612838351740&attachment_id=164256072246791&message_id=mid.%24cAAABcg0H7yF_Cy_F2142ep8X4GKr",
+                                "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/174405334_259070492629794_2304217932548921388_n.png?_nc_cat=110&ccb=1-3&_nc_sid=58c789&_nc_ohc=vE2j43xB3AYAX-ezABC&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=8a1b1ee5319c0a5443b52c0146247d09&oe=609EE59D",
                                 "buttons": [
                                 {
                                     "type": "postback",
@@ -126,7 +126,7 @@ class Botview(generic.View):
                             },{
                                 "title": "Холбоо барих",
                                 "subtitle":"Бид компанийн бүтээгдэхүүн үйлчилгээтэй холбоотой санал хүсэлтийг ажлын өдрүүдэд 8:30-18:00 цагт хүлээн авч шуурхай шийдвэрлэнэ.",
-                                "image_url":"https://www.facebook.com/messenger_media?thread_id=100612838351740&attachment_id=164256072246791&message_id=mid.%24cAAABcg0H7yF_Cy_F2142ep8X4GKr",
+                                "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/174405334_259070492629794_2304217932548921388_n.png?_nc_cat=110&ccb=1-3&_nc_sid=58c789&_nc_ohc=vE2j43xB3AYAX-ezABC&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=8a1b1ee5319c0a5443b52c0146247d09&oe=609EE59D",
                                 "buttons": [
                                 {
                                     "type": "postback",
