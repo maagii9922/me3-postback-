@@ -64,22 +64,22 @@ class Botview(generic.View):
                             "payload": {
                             "template_type": "generic",
                             "elements": [{
-                                "title": "Is this the right picture?",
+                                "title": "Би ойлгосонгүй! Бидэн рүү 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' гэж илгээнэ үү!",
                                 "buttons": [
                                 {
                                     "type": "postback",
-                                    "title": "ehleh!",
-                                    "payload": "yes",
+                                    "title": "Эхлэх",
+                                    "payload": "Эхлэх",
                                 },
                                 {
                                     "type": "postback",
-                                    "title": "holboo barih!",
-                                    "payload": "no",
+                                    "title": "Холбоо барих",
+                                    "payload": "Холбоо барих",
                                 },
                                 {
                                     "type": "postback",
-                                    "title": "tugeemel!",
-                                    "payload": "no",
+                                    "title": "Түгээмэл асуулт хариулт",
+                                    "payload": "Түгээмэл асуулт хариулт",
                                 }
                                 ],
                             }]
