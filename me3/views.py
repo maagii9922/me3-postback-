@@ -57,7 +57,7 @@ class Botview(generic.View):
                             "elements": [{
                                 "title": "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу",
                                 "subtitle":"Бидэнтэй холбогдох",
-                                "image_url":"https://www.facebook.com/messenger_media?thread_id=100612838351740&attachment_id=186711756628825&message_id=mid.%24cAAABcg0H7yF_CzoJW142fTAHMHM-"
+                                "image_url":"https://www.facebook.com/messenger_media?thread_id=100612838351740&attachment_id=186711756628825&message_id=mid.%24cAAABcg0H7yF_CzoJW142fTAHMHM-",
                                 "buttons": [
                                 {
                                     "type": "postback",
