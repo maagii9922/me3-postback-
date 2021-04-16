@@ -101,6 +101,66 @@ class Botview(generic.View):
                 d = json.dumps(
                     {"recipient": {"id": sender_psid}, 
                     "message": {"text": "home damjuullaa"}})
+            elif body["entry"][0]["messaging"][0]["postback"]['payload']=='contact':
+                d = json.dumps(
+                    {"recipient": {"id": sender_psid}, 
+                    "message": {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                            "template_type": "generic",
+                            "elements": [{
+                                "title": "Холбоо барих",
+                                "default_action": {
+                                    "type": "web_url",
+                                    "webview_height_ratio": "TALL"
+                                },
+                                "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Эхлэх2",
+                                    "payload": "home",
+                                },
+                                {
+                                    "type": "postback",
+                                    "title": "Холбоо барих2",
+                                    "payload": "contact",
+                                },
+                                {
+                                    "type": "postback",
+                                    "title": "Түгээмэл асуулт хариулт2",
+                                    "payload": "qa",
+                                }
+                                ],
+                            },
+                            {
+                                "title": "Холбоо барих",
+                                "default_action": {
+                                    "type": "web_url",
+                                    "webview_height_ratio": "TALL"
+                                },
+                                "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Эхлэх2",
+                                    "payload": "home",
+                                },
+                                {
+                                    "type": "postback",
+                                    "title": "Холбоо барих2",
+                                    "payload": "contact",
+                                },
+                                {
+                                    "type": "postback",
+                                    "title": "Түгээмэл асуулт хариулт2",
+                                    "payload": "qa",
+                                }
+                                ],
+                            }]
+                            }
+                        }
+                        }
+                        )
 
             
             status = requests.post('https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN, headers={ "Content-Type": "application/json"}, data=d)
