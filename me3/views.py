@@ -97,7 +97,7 @@ class Botview(generic.View):
             print(body["entry"][0]["messaging"][0]["postback"])
             sender_psid = c["sender"]["id"]
             d=""
-            if body["entry"][0]["messaging"][0]['payload']=='home':
+            if body["entry"][0]["messaging"][0]['payload']["postback"]=='home':
                 d = json.dumps(
                     {"recipient": {"id": sender_psid}, 
                     "message": {"text": "home damjuullaa"+b["text"]}})
