@@ -109,7 +109,8 @@ class Botview(generic.View):
                             "type": "template",
                             "payload": {
                             "template_type": "generic",
-                            "elements": [{
+                            "elements": [
+                                {
                                 "title": "Холбоо барих",
                                 "default_action": {
                                     "type": "web_url",
@@ -132,31 +133,8 @@ class Botview(generic.View):
                                     "payload": "qa",
                                 }
                                 ],
-                            },
-                            {
-                                "title": "Холбоо барих",
-                                "default_action": {
-                                    "type": "web_url",
-                                    "webview_height_ratio": "TALL"
-                                },
-                                "buttons": [
-                                {
-                                    "type": "postback",
-                                    "title": "Эхлэх2",
-                                    "payload": "home",
-                                },
-                                {
-                                    "type": "postback",
-                                    "title": "Холбоо барих2",
-                                    "payload": "contact",
-                                },
-                                {
-                                    "type": "postback",
-                                    "title": "Түгээмэл асуулт хариулт2",
-                                    "payload": "qa",
-                                }
-                                ],
-                            }]
+                            }
+                            ]
                             }
                         }
                         }
