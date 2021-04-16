@@ -65,17 +65,20 @@ class Botview(generic.View):
                             "template_type": "generic",
                             "elements": [{
                                 "title": "Is this the right picture?",
-                                "subtitle": "Tap a button to answer.",
-                                "image_url": attachment_url,
                                 "buttons": [
                                 {
                                     "type": "postback",
-                                    "title": "Yes!",
+                                    "title": "ehleh!",
                                     "payload": "yes",
                                 },
                                 {
                                     "type": "postback",
-                                    "title": "No!",
+                                    "title": "holboo barih!",
+                                    "payload": "no",
+                                },
+                                {
+                                    "type": "postback",
+                                    "title": "tugeemel!",
                                     "payload": "no",
                                 }
                                 ],
