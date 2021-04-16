@@ -133,8 +133,8 @@ class Botview(generic.View):
                                     "payload": "qa",
                                 }
                                 ]
-                            }#el
-                            ]#el
+                            }
+                            ]
                             }
                         }
                         }
