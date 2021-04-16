@@ -111,7 +111,8 @@ class Botview(generic.View):
                             "template_type": "generic",
                             "elements": [{
                                 "title": "Холбоо барих",
-                                "subtitle":"77107070,http://bumanit.mn ",
+                                "subtitle":"99221422",
+                                "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/173742530_281534720215938_8618674504973062084_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=58c789&_nc_ohc=aP26TMSylogAX8N1zwB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=f773c76251565e53f9ff130d5d42ea7a&oe=609D57A2",
                                 "buttons": [
                                 {
                                     "type": "postback",
@@ -122,7 +123,8 @@ class Botview(generic.View):
                                 ]
                             },{
                                 "title": "Холбоо барих",
-                                "subtitle":"http://bumanit.mn ",
+                                "subtitle":"96692287",
+                                "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/173742530_281534720215938_8618674504973062084_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=58c789&_nc_ohc=aP26TMSylogAX8N1zwB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=f773c76251565e53f9ff130d5d42ea7a&oe=609D57A2",
                                 "buttons": [
                                 {
                                     "type": "postback",
