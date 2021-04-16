@@ -36,14 +36,6 @@ class Botview(generic.View):
         body=json.loads(self.request.body.decode('utf-8'))
         c=body["entry"][0]["messaging"][0]
         print(c)
-        # if "b" in body:
-        #     return HttpResponse("bna")
-        # else:
-        #     return HttpResponse("alga")
-        # for key in body:
-        #     print(    body[key]             ) 
-        # for key in body["c"]:
-        #     print(key)
         if "message" in c:
             b=c["message"]
             if "text" in b and "attachments" in b:
@@ -68,17 +60,17 @@ class Botview(generic.View):
                                 {
                                     "type": "postback",
                                     "title": "Эхлэх",
-                                    "payload": "Эхлэх",
+                                    "payload": "home",
                                 },
                                 {
                                     "type": "postback",
                                     "title": "Холбоо барих",
-                                    "payload": "Холбоо барих",
+                                    "payload": "contact",
                                 },
                                 {
                                     "type": "postback",
                                     "title": "Түгээмэл асуулт хариулт",
-                                    "payload": "Түгээмэл асуулт хариулт",
+                                    "payload": "qa",
                                 }
                                 ],
                             }]
@@ -103,41 +95,9 @@ class Botview(generic.View):
                 return HttpResponse(status)
         elif "postback" in c:
             print(body["entry"][0]["messaging"][0]["postback"])
-            # return HttpResponse(c["postback"]["title"]+" "+c["postback"]["payload"])
             sender_psid = c["sender"]["id"]
-            # if(c["postback"]["payload"])
-            d = json.dumps(
-                {"recipient": {"id": sender_psid}, 
-                "message": {
-                    
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                            "template_type": "generic",
-                            "elements": [{
-                                "title": "Бидэн рүү 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' гэж дарна уу",
-                                "buttons": [
-                                {
-                                    "type": "postback",
-                                    "title": "Эхлэх2",
-                                    "payload": "Эхлэх",
-                                },
-                                {
-                                    "type": "postback",
-                                    "title": "Холбоо барих2",
-                                    "payload": "Холбоо барих",
-                                },
-                                {
-                                    "type": "postback",
-                                    "title": "Түгээмэл асуулт хариулт2",
-                                    "payload": "Түгээмэл асуулт хариулт",
-                                }
-                                ],
-                            }]
-                            }
-                        }
-                        }
-                 })
+            if g.....f['payload']=='vjhgku'
+            
             status = requests.post('https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN, headers={ "Content-Type": "application/json"}, data=d)
             return HttpResponse(status)
 
