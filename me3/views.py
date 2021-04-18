@@ -50,7 +50,31 @@ class Botview(generic.View):
                 # return HttpResponse("attachment damjuullaa")
                 # return HttpResponse(b["attachments"])
                 attachment_url = b["attachments"][0]["payload"]["url"]
-                d = json.dumps(
+                d = show_home(sender_psid)
+                return HttpResponse(send_page(d))
+            elif "text" in b and "attachments" not in b:
+                # return HttpResponse("text damjuullaa")
+                # return HttpResponse(b["text"])
+                d = text_search(b["text"], sender_psid)
+                return HttpResponse(send_page(d))
+        elif "postback" in c:
+            print(body["entry"][0]["messaging"][0]["postback"])
+            d = ""
+            if body["entry"][0]["messaging"][0]["postback"]['payload'] == 'home':
+                # d = json.dumps(
+                #     {"recipient": {"id": sender_psid},
+                #      "message": {"text": "home damjuullaa"}})
+                d = show_home(sender_psid)
+            elif body["entry"][0]["messaging"][0]["postback"]['payload'] == 'contact':
+                d = show_contact(sender_psid)
+            elif body["entry"][0]["messaging"][0]["postback"]['payload'] == 'qa':
+                d = show_qa(sender_psid)
+            return HttpResponse(send_page(d))
+
+        return HttpResponse("end")
+
+def show_attach(sender_psid):
+    d = json.dumps(
                     {"recipient": {"id": sender_psid},
                      "message": {
                         "attachment": {
@@ -83,27 +107,7 @@ class Botview(generic.View):
                         }
                     }
                      })
-                return HttpResponse(send_page(d))
-            elif "text" in b and "attachments" not in b:
-                # return HttpResponse("text damjuullaa")
-                # return HttpResponse(b["text"])
-                d = text_search(b["text"], sender_psid)
-                return HttpResponse(send_page(d))
-        elif "postback" in c:
-            print(body["entry"][0]["messaging"][0]["postback"])
-            d = ""
-            if body["entry"][0]["messaging"][0]["postback"]['payload'] == 'home':
-                # d = json.dumps(
-                #     {"recipient": {"id": sender_psid},
-                #      "message": {"text": "home damjuullaa"}})
-                d = show_home(sender_psid)
-            elif body["entry"][0]["messaging"][0]["postback"]['payload'] == 'contact':
-                d = show_contact(sender_psid)
-            elif body["entry"][0]["messaging"][0]["postback"]['payload'] == 'qa':
-                d = show_qa(sender_psid)
-            return HttpResponse(send_page(d))
-
-        return HttpResponse("end")
+    return d
 
 
 def text_search(t, sender_psid):
