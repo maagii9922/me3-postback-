@@ -87,7 +87,7 @@ class Botview(generic.View):
             elif "text" in b and "attachments" not in b:
                 # return HttpResponse("text damjuullaa")
                 # return HttpResponse(b["text"])
-                d = text_search(joke_text, sender_psid)
+                d = text_search(b["text"], sender_psid)
                 return HttpResponse(send_page(d))
         elif "postback" in c:
             print(body["entry"][0]["messaging"][0]["postback"])
