@@ -35,17 +35,17 @@ class Botview(generic.View):
     def post(self,request,*args,**kwargs):
         body=json.loads(self.request.body.decode('utf-8'))
         c=body["entry"][0]["messaging"][0]
+        sender_psid = c["sender"]["id"]
         print(c)
         if "message" in c:
             b=c["message"]
             if "text" in b and "attachments" in b:
-                # return HttpResponse("text attachment damjuullaa")
+                # return HttpResponse("text attachment damjuullaa")                
                 return HttpResponse(b["text"] + " "+ b["attachments"])                
             elif "attachments" in b and "text" not in b:
                 print(b["attachments"][0])
                 # return HttpResponse("attachment damjuullaa")
                 # return HttpResponse(b["attachments"])
-                sender_psid = c["sender"]["id"]
                 attachment_url = b["attachments"][0]["payload"]["url"]
                 d = json.dumps(
                     {"recipient": {"id": sender_psid}, 
@@ -79,32 +79,49 @@ class Botview(generic.View):
                             }
                         }
                         }
-                    
-                    
-                    
-                    
                     })
-                status = requests.post('https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN, headers={ "Content-Type": "application/json"}, data=d)
-                return HttpResponse(status)
+                return HttpResponse(  send_page(d)    )
             elif "text" in b and "attachments" not in b:
                 # return HttpResponse("text damjuullaa")
                 # return HttpResponse(b["text"])
-                sender_psid = c["sender"]["id"]
-                d = json.dumps(
-                    {"recipient": {"id": sender_psid}, 
-                    "message": {"text": "text damjuullaa"+b["text"]}})
-                status = requests.post('https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN, headers={ "Content-Type": "application/json"}, data=d)
-                return HttpResponse(status)
+                d = text_search(b["text"])
+                return HttpResponse(  send_page(d)    )
         elif "postback" in c:
-            print(body["entry"][0]["messaging"][0]["postback"])
-            sender_psid = c["sender"]["id"]
+            print(body["entry"][0]["messaging"][0]["postback"])            
             d=""
             if body["entry"][0]["messaging"][0]["postback"]['payload']=='home':
                 d = json.dumps(
                     {"recipient": {"id": sender_psid}, 
                     "message": {"text": "home damjuullaa"}})
             elif body["entry"][0]["messaging"][0]["postback"]['payload']=='contact':
-                cont = []
+                d = show_contact(sender_psid)
+            elif body["entry"][0]["messaging"][0]["postback"]['payload']=='qa':
+                d = show_qa(sender_psid)
+            return HttpResponse(  send_page(d)    )
+
+            
+        
+
+        return HttpResponse("end")
+
+
+def text_search(t):
+    tokens = re.sub(r"[^a-zA-Z0-9А-яӨҮөү,\s]", '', t).lower()
+    joke_text = ''
+    for key, value in jokes.items(): 
+        if tokens.find(key) >= 0:
+            joke_text = random.choice(jokes[key])
+    
+    if not joke_text:
+        joke_text = "Би ойлгосонгүй! Бидэн уруу 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' гэж илгээнэ үү!"
+
+    return json.dumps(
+        {"recipient": {"id": sender_psid}, 
+        "message": {"text": "text damjuullaa"+b["text"]}})
+
+
+def show_contact(sender_psid ):
+    cont = []
                 for cc in jokes['холбоо барих']:
                     cont.append({
                                 "title": cc,
@@ -134,9 +151,11 @@ class Botview(generic.View):
                     
                     
                     })
+    return d
 
-            elif body["entry"][0]["messaging"][0]["postback"]['payload']=='qa':
-                cont = []
+
+def show_qa(sender_psid ):
+    cont = []
                 for cc in jokes['түгээмэл асуулт хариулт']:
                     cont.append({
                                 "title": cc,
@@ -166,16 +185,40 @@ class Botview(generic.View):
                     
                     
                     })
+    return d
+
+def send_page(d):
+    return requests.post('https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN, headers={ "Content-Type": "application/json"}, data=d)
 
 
-                
-            status = requests.post('https://graph.facebook.com/v2.6/me/messages?access_token=%s' % PAGE_ACCESS_TOKEN, headers={ "Content-Type": "application/json"}, data=d)
-            return HttpResponse(status)
 
-            
-        
 
-        return HttpResponse("end")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
