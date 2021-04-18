@@ -120,7 +120,6 @@ class Botview(generic.View):
                                 ]
                             }
                         )
-                print(cont)
                 d = json.dumps(
                     {"recipient": {"id": sender_psid}, 
                     "message": {
@@ -137,6 +136,22 @@ class Botview(generic.View):
                     })
 
             elif body["entry"][0]["messaging"][0]["postback"]['payload']=='qa':
+                cont = []
+                for cc in jokes['түгээмэл асуулт хариулт']:
+                    cont.append({
+                                "title": cc,
+                                "subtitle":"asuult1 hariult1",
+                                "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/173742530_281534720215938_8618674504973062084_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=58c789&_nc_ohc=aP26TMSylogAX8N1zwB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=f773c76251565e53f9ff130d5d42ea7a&oe=609D57A2",
+                                "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": cc,
+                                    "payload": cc
+                                }
+                                
+                                ]
+                            }
+                        )
                 d = json.dumps(
                     {"recipient": {"id": sender_psid}, 
                     "message": {
@@ -144,32 +159,7 @@ class Botview(generic.View):
                             "type": "template",
                             "payload": {
                             "template_type": "generic",
-                            "elements": [{
-                                "title": "Түгээмэл асуулт хариулт",
-                                "subtitle":"99221422",
-                                "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/173742530_281534720215938_8618674504973062084_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=58c789&_nc_ohc=aP26TMSylogAX8N1zwB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=f773c76251565e53f9ff130d5d42ea7a&oe=609D57A2",
-                                "buttons": [
-                                {
-                                    "type": "postback",
-                                    "title": "Эхлэх",
-                                    "payload": "home",
-                                }
-                                
-                                ]
-                            },{
-                                "title": "Түгээмэл асуулт хариулт",
-                                "subtitle":"96692287",
-                                "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/173742530_281534720215938_8618674504973062084_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=58c789&_nc_ohc=aP26TMSylogAX8N1zwB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=f773c76251565e53f9ff130d5d42ea7a&oe=609D57A2",
-                                "buttons": [
-                                {
-                                    "type": "postback",
-                                    "title": "Эхлэх",
-                                    "payload": "home",
-                                }
-                                ]
-                            }
-                            
-                            ]
+                            "elements": cont
                             }
                         }
                         }
