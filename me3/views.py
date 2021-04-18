@@ -154,7 +154,7 @@ def show_contact(sender_psid):
 
 def show_qa(sender_psid):
     cont = []
-       for cc in jokes['түгээмэл асуулт хариулт']:
+    for cc in jokes['түгээмэл асуулт хариулт']:
             cont.append({
                         "title": cc,
                         "subtitle": "asuult1 hariult1",
