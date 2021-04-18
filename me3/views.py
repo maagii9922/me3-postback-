@@ -169,7 +169,7 @@ def show_qa(sender_psid):
                         ]
                         }
                         )
-        d = json.dumps(
+    d = json.dumps(
             {"recipient": {"id": sender_psid},
              "message": {
                 "attachment": {
@@ -180,9 +180,7 @@ def show_qa(sender_psid):
                     }
                 }
             }
-
-
-             })
+    })
     return d
 
 
