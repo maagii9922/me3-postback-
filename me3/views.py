@@ -115,7 +115,8 @@ def text_search(t, sender_psid):
 
     return json.dumps(
         {"recipient": {"id": sender_psid},
-         "message": {"text": "text damjuullaa"+b["text"]}})
+         "message": {"text": joke_text}
+        })
 
 
 def show_contact(sender_psid):
