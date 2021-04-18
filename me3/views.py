@@ -135,19 +135,11 @@ def show_home(sender_psid, t):
     cont = []
     for cc in jokes:
         cont.append({
-                        "title": cc,
-                        "subtitle": "Бидний тухай",
-                        "image_url": "https://scontent.xx.fbcdn.net/v/t1.15752-9/174405334_259070492629794_2304217932548921388_n.png?_nc_cat=110&ccb=1-3&_nc_sid=58c789&_nc_ohc=vE2j43xB3AYAX-ezABC&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=8a1b1ee5319c0a5443b52c0146247d09&oe=609EE59D",
-                        "buttons": [
-                            {
-                            "type": "postback",
-                            "title": cc,
-                            "payload": cc
-                        }
-
-                        ]
-                        }
-                        )
+                    "type": "postback",
+                    "title": cc,
+                    "payload": cc
+                    }
+                )
         d = json.dumps(
             {"recipient": {"id": sender_psid},
              "message": {
@@ -156,7 +148,12 @@ def show_home(sender_psid, t):
                     "type": "template",
                     "payload": {
                         "template_type": "generic",
-                        "elements": cont
+                        "elements": {
+                            "title": cc,
+                            "subtitle": "Бидний тухай",
+                            "image_url": "https://scontent.xx.fbcdn.net/v/t1.15752-9/174405334_259070492629794_2304217932548921388_n.png?_nc_cat=110&ccb=1-3&_nc_sid=58c789&_nc_ohc=vE2j43xB3AYAX-ezABC&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=8a1b1ee5319c0a5443b52c0146247d09&oe=609EE59D",
+                            "buttons": cont
+                        }
                     }
                 }
             }
