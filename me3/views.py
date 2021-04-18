@@ -116,7 +116,7 @@ def text_search(t, sender_psid):
     if not joke_text:
         joke_text = "Би ойлгосонгүй! Бидэн уруу 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' гэж илгээнэ үү!"
 
-    return json.dumps(
+    d=json.dumps(
         {"recipient": {"id": sender_psid}, 
                     "message": {
                         "text": joke_text,
@@ -154,6 +154,7 @@ def text_search(t, sender_psid):
                     
                     
                     })
+    return d
 
 def show_home(sender_psid):
     cont = []
