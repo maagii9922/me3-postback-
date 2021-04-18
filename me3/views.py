@@ -42,7 +42,9 @@ class Botview(generic.View):
             b = c["message"]
             if "text" in b and "attachments" in b:
                 # return HttpResponse("text attachment damjuullaa")
-                return HttpResponse(b["text"] + " " + b["attachments"])
+                # return HttpResponse(b["text"] + " " + b["attachments"])
+                d = text_search(b["text"], sender_psid)
+                return HttpResponse(send_page(d))
             elif "attachments" in b and "text" not in b:
                 print(b["attachments"][0])
                 # return HttpResponse("attachment damjuullaa")
@@ -91,9 +93,10 @@ class Botview(generic.View):
             print(body["entry"][0]["messaging"][0]["postback"])
             d = ""
             if body["entry"][0]["messaging"][0]["postback"]['payload'] == 'home':
-                d = json.dumps(
-                    {"recipient": {"id": sender_psid},
-                     "message": {"text": "home damjuullaa"}})
+                # d = json.dumps(
+                #     {"recipient": {"id": sender_psid},
+                #      "message": {"text": "home damjuullaa"}})
+                d = show_home(sender_psid)
             elif body["entry"][0]["messaging"][0]["postback"]['payload'] == 'contact':
                 d = show_contact(sender_psid)
             elif body["entry"][0]["messaging"][0]["postback"]['payload'] == 'qa':
@@ -118,6 +121,38 @@ def text_search(t, sender_psid):
          "message": {"text": joke_text}
         })
 
+def show_home(sender_psid):
+    cont = []
+    for cc in jokes['эхлэх']:
+        cont.append({
+                        "title": cc,
+                        "subtitle": "Бидний тухай",
+                        "image_url": "https://scontent.xx.fbcdn.net/v/t1.15752-9/174405334_259070492629794_2304217932548921388_n.png?_nc_cat=110&ccb=1-3&_nc_sid=58c789&_nc_ohc=vE2j43xB3AYAX-ezABC&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=8a1b1ee5319c0a5443b52c0146247d09&oe=609EE59D",
+                        "buttons": [
+                            {
+                            "type": "postback",
+                            "title": cc,
+                            "payload": cc
+                        }
+
+                        ]
+                        }
+                        )
+        d = json.dumps(
+            {"recipient": {"id": sender_psid},
+             "message": {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": cont
+                    }
+                }
+            }
+
+
+            })
+    return d
 
 def show_contact(sender_psid):
     cont = []
