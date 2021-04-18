@@ -64,7 +64,7 @@ class Botview(generic.View):
                 # d = json.dumps(
                 #     {"recipient": {"id": sender_psid},
                 #      "message": {"text": "home damjuullaa"}})
-                d = show_home(sender_psid)
+                d = show_home(sender_psid, "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу")
             elif body["entry"][0]["messaging"][0]["postback"]['payload'] == 'холбоо барих':
                 d = show_contact(sender_psid)
             elif body["entry"][0]["messaging"][0]["postback"]['payload'] == 'түгээмэл асуулт хариулт':
@@ -143,17 +143,16 @@ def show_home(sender_psid, t):
         d = json.dumps(
             {"recipient": {"id": sender_psid},
              "message": {
-                "text": t,
                 "attachment": {
                     "type": "template",
                     "payload": {
                         "template_type": "generic",
-                        "elements": {
-                            "title": cc,
+                        "elements": [{
+                            "title": t,
                             "subtitle": "Бидний тухай",
                             "image_url": "https://scontent.xx.fbcdn.net/v/t1.15752-9/174405334_259070492629794_2304217932548921388_n.png?_nc_cat=110&ccb=1-3&_nc_sid=58c789&_nc_ohc=vE2j43xB3AYAX-ezABC&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=8a1b1ee5319c0a5443b52c0146247d09&oe=609EE59D",
                             "buttons": cont
-                        }
+                        }]
                     }
                 }
             }
