@@ -60,14 +60,14 @@ class Botview(generic.View):
         elif "postback" in c:
             print(body["entry"][0]["messaging"][0]["postback"])
             d = ""
-            if body["entry"][0]["messaging"][0]["postback"]['payload'] == 'home':
+            if body["entry"][0]["messaging"][0]["postback"]['payload'] == 'эхлэх':
                 # d = json.dumps(
                 #     {"recipient": {"id": sender_psid},
                 #      "message": {"text": "home damjuullaa"}})
                 d = show_home(sender_psid)
-            elif body["entry"][0]["messaging"][0]["postback"]['payload'] == 'contact':
+            elif body["entry"][0]["messaging"][0]["postback"]['payload'] == 'холбоо барих':
                 d = show_contact(sender_psid)
-            elif body["entry"][0]["messaging"][0]["postback"]['payload'] == 'qa':
+            elif body["entry"][0]["messaging"][0]["postback"]['payload'] == 'түгээмэл асуулт хариулт':
                 d = show_qa(sender_psid)
             return HttpResponse(send_page(d))
 
@@ -118,7 +118,7 @@ def text_search(t, sender_psid):
             joke_text = random.choice(jokes[key])
 
     if not joke_text:
-        joke_text = "Би ойлгосонгүй! Бидэн уруу 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' гэж илгээнэ үү!"
+        # joke_text = "Би ойлгосонгүй! Бидэн уруу 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' гэж илгээнэ үү!"
 
         d=json.dumps(
             {"recipient": {"id": sender_psid}, 
@@ -129,7 +129,7 @@ def text_search(t, sender_psid):
                                 "payload": {
                                 "template_type": "generic",
                                 "elements": [{
-                                    "title": "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу",
+                                    "title": "Би ойлгосонгүй....... Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу",
                                     "subtitle":"Бидэнтэй холбогдох",
                                     "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/175042400_1413714218977426_6786538452300795158_n.png?_nc_cat=102&ccb=1-3&_nc_sid=58c789&_nc_ohc=LsYHLr8VFVMAX8RogPN&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=747a859757018d246ded1d5f1074ca09&oe=609FF38D",
                                     "buttons": [
@@ -140,12 +140,12 @@ def text_search(t, sender_psid):
                                     },
                                     {
                                         "type": "postback",
-                                        "title": "joke",
+                                        "title": "contact",
                                         "payload": "contact",
                                     },
                                     {
                                         "type": "postback",
-                                        "title": "joke",
+                                        "title": "qa",
                                         "payload": "qa",
                                     }
                                     ],
@@ -159,10 +159,18 @@ def text_search(t, sender_psid):
                         
                         })
         return d
+    else :
+        d=json.dumps(
+            {"recipient": {"id": sender_psid}, 
+                        "message": {
+                            "text": joke_text,
+                        }
+            })
+        return d
 
 def show_home(sender_psid):
     cont = []
-    for cc in jokes['эхлэх']:
+    for cc in jokes:
         cont.append({
                         "title": cc,
                         "subtitle": "Бидний тухай",
