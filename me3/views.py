@@ -119,12 +119,13 @@ def text_search(t, sender_psid):
         d=json.dumps(
             {"recipient": {"id": sender_psid}, 
                         "message": {
+                            "text": joke_text,
                             "attachment": {
                                 "type": "template",
                                 "payload": {
                                 "template_type": "generic",
                                 "elements": [{
-                                    "text": joke_text,
+                                    "title": "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу",
                                     "subtitle":"Бидэнтэй холбогдох",
                                     "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/175042400_1413714218977426_6786538452300795158_n.png?_nc_cat=102&ccb=1-3&_nc_sid=58c789&_nc_ohc=LsYHLr8VFVMAX8RogPN&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=747a859757018d246ded1d5f1074ca09&oe=609FF38D",
                                     "buttons": [
