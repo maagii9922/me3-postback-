@@ -49,8 +49,8 @@ class Botview(generic.View):
                 print(b["attachments"][0])
                 # return HttpResponse("attachment damjuullaa")
                 # return HttpResponse(b["attachments"])
-                attachment_url = b["attachments"][0]["payload"]["url"]
-                d = show_attach(sender_psid)
+                # attachment_url = b["attachments"][0]["payload"]["url"]
+                d = show_home(sender_psid, "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу")
                 return HttpResponse(send_page(d))
             elif "text" in b and "attachments" not in b:
                 # return HttpResponse("text damjuullaa")
@@ -72,42 +72,6 @@ class Botview(generic.View):
             return HttpResponse(send_page(d))
 
         return HttpResponse("end")
-
-def show_attach(sender_psid):
-    d = json.dumps(
-                    {"recipient": {"id": sender_psid},
-                     "message": {
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                                "template_type": "generic",
-                                "elements": [{
-                                "title": "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу",
-                                "subtitle": "Бидэнтэй холбогдох",
-                                "image_url": "https://scontent.xx.fbcdn.net/v/t1.15752-9/175042400_1413714218977426_6786538452300795158_n.png?_nc_cat=102&ccb=1-3&_nc_sid=58c789&_nc_ohc=LsYHLr8VFVMAX8RogPN&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=747a859757018d246ded1d5f1074ca09&oe=609FF38D",
-                                "buttons": [
-                                    {
-                                    "type": "postback",
-                                    "title": "Эхлэх",
-                                    "payload": "home",
-                                },
-                                    {
-                                    "type": "postback",
-                                    "title": "Холбоо барих",
-                                    "payload": "contact",
-                                },
-                                    {
-                                    "type": "postback",
-                                    "title": "Түгээмэл асуулт хариулт",
-                                    "payload": "qa",
-                                }
-                                ],
-                            }]
-                            }
-                        }
-                    }
-                     })
-    return d
 
 
 def text_search(t, sender_psid):
@@ -149,7 +113,7 @@ def show_home(sender_psid, t):
                         "template_type": "generic",
                         "elements": [{
                             "title": t,
-                            "subtitle": "Бидний тухай",
+                            "subtitle": "Эхлэх",
                             "image_url": "https://scontent.xx.fbcdn.net/v/t1.15752-9/175042400_1413714218977426_6786538452300795158_n.png?_nc_cat=102&ccb=1-3&_nc_sid=58c789&_nc_ohc=LsYHLr8VFVMAX8RogPN&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=747a859757018d246ded1d5f1074ca09&oe=609FF38D",
                             "buttons": cont
                         }]
