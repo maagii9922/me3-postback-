@@ -87,7 +87,7 @@ class Botview(generic.View):
             elif "text" in b and "attachments" not in b:
                 # return HttpResponse("text damjuullaa")
                 # return HttpResponse(b["text"])
-                d = text_search(b["text"], sender_psid)
+                d = text_search(joke_text, sender_psid)
                 return HttpResponse(send_page(d))
         elif "postback" in c:
             print(body["entry"][0]["messaging"][0]["postback"])
@@ -116,45 +116,44 @@ def text_search(t, sender_psid):
     if not joke_text:
         joke_text = "Би ойлгосонгүй! Бидэн уруу 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' гэж илгээнэ үү!"
 
-    d=json.dumps(
-        {"recipient": {"id": sender_psid}, 
-                    "message": {
-                        "text": joke_text,
-                        "attachment": {
-                            "type": "template",
-                            "payload": {
-                            "template_type": "generic",
-                            "elements": [{
-                                "title": "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу",
-                                "subtitle":"Бидэнтэй холбогдох",
-                                "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/175042400_1413714218977426_6786538452300795158_n.png?_nc_cat=102&ccb=1-3&_nc_sid=58c789&_nc_ohc=LsYHLr8VFVMAX8RogPN&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=747a859757018d246ded1d5f1074ca09&oe=609FF38D",
-                                "buttons": [
-                                {
-                                    "type": "postback",
-                                    "title": "Эхлэх",
-                                    "payload": "home",
-                                },
-                                {
-                                    "type": "postback",
-                                    "title": "Холбоо барих",
-                                    "payload": "contact",
-                                },
-                                {
-                                    "type": "postback",
-                                    "title": "Түгээмэл асуулт хариулт",
-                                    "payload": "qa",
+        d=json.dumps(
+            {"recipient": {"id": sender_psid}, 
+                        "message": {
+                            "attachment": {
+                                "type": "template",
+                                "payload": {
+                                "template_type": "generic",
+                                "elements": [{
+                                    "title": "Сайн байна уу Та 'Холбоо барих', 'Түгээмэл асуулт хариулт', 'Эхлэх' дарна уу",
+                                    "subtitle":"Бидэнтэй холбогдох",
+                                    "image_url":"https://scontent.xx.fbcdn.net/v/t1.15752-9/175042400_1413714218977426_6786538452300795158_n.png?_nc_cat=102&ccb=1-3&_nc_sid=58c789&_nc_ohc=LsYHLr8VFVMAX8RogPN&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=747a859757018d246ded1d5f1074ca09&oe=609FF38D",
+                                    "buttons": [
+                                    {
+                                        "type": "postback",
+                                        "title": "Эхлэх",
+                                        "payload": "home",
+                                    },
+                                    {
+                                        "type": "postback",
+                                        "title": "Холбоо барих",
+                                        "payload": "contact",
+                                    },
+                                    {
+                                        "type": "postback",
+                                        "title": "Түгээмэл асуулт хариулт",
+                                        "payload": "qa",
+                                    }
+                                    ],
+                                }]
                                 }
-                                ],
-                            }]
                             }
-                        }
-                        }
-                    
-                    
-                    
-                    
-                    })
-    return d
+                            }
+                        
+                        
+                        
+                        
+                        })
+        return d
 
 def show_home(sender_psid):
     cont = []
