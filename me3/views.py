@@ -50,7 +50,7 @@ class Botview(generic.View):
                 # return HttpResponse("attachment damjuullaa")
                 # return HttpResponse(b["attachments"])
                 attachment_url = b["attachments"][0]["payload"]["url"]
-                d = show_home(sender_psid)
+                d = show_attach(sender_psid)
                 return HttpResponse(send_page(d))
             elif "text" in b and "attachments" not in b:
                 # return HttpResponse("text damjuullaa")
