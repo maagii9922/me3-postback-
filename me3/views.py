@@ -85,7 +85,7 @@ class Botview(generic.View):
             elif "text" in b and "attachments" not in b:
                 # return HttpResponse("text damjuullaa")
                 # return HttpResponse(b["text"])
-                d = text_search(b["text"])
+                d = text_search(b["text"], sender_psid)
                 return HttpResponse(send_page(d))
         elif "postback" in c:
             print(body["entry"][0]["messaging"][0]["postback"])
@@ -103,7 +103,7 @@ class Botview(generic.View):
         return HttpResponse("end")
 
 
-def text_search(t):
+def text_search(t, sender_psid):
     tokens = re.sub(r"[^a-zA-Z0-9А-яӨҮөү,\s]", '', t).lower()
     joke_text = ''
     for key, value in jokes.items():
