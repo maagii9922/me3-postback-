@@ -130,17 +130,17 @@ def text_search(t, sender_psid):
                                     "buttons": [
                                     {
                                         "type": "postback",
-                                        "title": "Эхлэх",
+                                        "title": "joke",
                                         "payload": "home",
                                     },
                                     {
                                         "type": "postback",
-                                        "title": "Холбоо барих",
+                                        "title": "joke",
                                         "payload": "contact",
                                     },
                                     {
                                         "type": "postback",
-                                        "title": "Түгээмэл асуулт хариулт",
+                                        "title": "joke",
                                         "payload": "qa",
                                     }
                                     ],
